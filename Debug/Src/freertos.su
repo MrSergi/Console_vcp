@@ -1,0 +1,7 @@
+freertos.c:77:13:configureTimerForRunTimeStats	0	static
+freertos.c:82:22:getRunTimeCounterValue	0	static
+freertos.c:89:13:vApplicationIdleHook	0	static
+freertos.c:104:13:vApplicationTickHook	0	static
+freertos.c:115:13:vApplicationMallocFailedHook	0	static
+freertos.c:131:13:PreSleepProcessing	0	static
+freertos.c:136:13:PostSleepProcessing	0	static

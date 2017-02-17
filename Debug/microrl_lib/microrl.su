@@ -1,0 +1,14 @@
+microrl.c:189:12:split	20	static
+microrl.c:236:14:u16bit_to_str	16	static
+microrl.c:281:13:terminal_reset_cursor.isra.2	24	static
+microrl.c:256:13:terminal_move_cursor.isra.3	32	static
+microrl.c:301:13:terminal_print_line	32	static
+microrl.c:363:13:hist_search	32	static
+microrl.c:452:13:microrl_backspace	8	static
+microrl.c:429:12:microrl_insert_text	16	static
+microrl.c:319:6:microrl_init	16	static
+microrl.c:344:6:microrl_set_complete_callback	0	static
+microrl.c:350:6:microrl_set_execute_callback	0	static
+microrl.c:356:6:microrl_set_sigint_callback	0	static
+microrl.c:530:6:new_line_handler	56	static
+microrl.c:558:6:microrl_insert_char	64	static

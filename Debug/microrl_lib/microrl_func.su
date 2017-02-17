@@ -1,0 +1,16 @@
+microrl_func.c:158:13:prv_sigint	0	static
+microrl_func.c:139:16:prv_complet	40	static
+microrl_func.c:114:12:prv_getFuncArrayIndex	24	static
+microrl_func.c:259:6:microrl_sendString	8	static
+microrl_func.c:216:12:prv_TerminalFunc_clear	8	static
+microrl_func.c:47:6:consoleInit	8	static
+microrl_func.c:67:6:microrl_terminalProcess	16	static
+microrl_func.c:80:6:microrl_registerExecuteFunc	20	static
+microrl_func.c:52:6:microrl_terminalInit	8	static
+microrl_func.c:91:6:microrl_printString	0	static
+microrl_func.c:96:6:microrl_printStringWithEndl	8	static
+microrl_func.c:125:12:prv_execute	16	static
+microrl_func.c:164:12:prv_TerminalFunc_about	8	static
+microrl_func.c:102:6:microrl_printEndl	0	static
+microrl_func.c:171:12:prv_TerminalFunc_help	16	static
+microrl_func.c:225:6:ConsoleInput	24	static
