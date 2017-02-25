@@ -1,16 +1,14 @@
 ﻿#include <string.h>				// for strcmp, strstr
 #include <stdio.h>
 #include "microrl.h"
-//#include "uart.h"				// for UART_GetCharBlocking, UART_SendString
 #include "microrl_func.h"
-//#include "core_cm3.h"		// for NVIC_SystemReset
-//#include "stm32f103xe.h"
 #include "stm32f1xx_hal.h"
 #include "usb_device.h"
 #include "usbd_cdc_if.h"
 #include "FreeRTOS.h"
 #include "queue.h"
 #include "semphr.h"
+#include "cmsis_os.h"
 
 
 //Define this macros with correct write/read terminal functions
@@ -70,10 +68,8 @@ void microrl_terminalProcess()
 
 	if (xQueueCmdBuffer)
 	{
-//		HAL_GPIO_TogglePin(LED_STAT_GPIO_Port, LED_STAT_Pin);
 		xQueueReceive(xQueueCmdBuffer, &ch, portMAX_DELAY);
-		microrl_printString(&ch);
-//		microrl_insert_char (prl, (int)ch);
+		microrl_insert_char (prl, (int)ch);
 	}
 }
 
@@ -224,7 +220,6 @@ static int prv_TerminalFunc_clear(int argc, const char * const * argv)
 //	Обработчик прерывания по приходу данных по USB
 void ConsoleInput(uint8_t* Buf, uint32_t Len)
 {
-	char str[50];
 	uint32_t i;
 	portBASE_TYPE xHigherPriorityTaskWoken;
 
@@ -233,17 +228,8 @@ void ConsoleInput(uint8_t* Buf, uint32_t Len)
 
 	if (xQueueCmdBuffer)
 	{
-//		sprintf(str,"Len Buf: %d\r\n", Len);
-//		microrl_printString (str);
-//		microrl_printString (Buf);
-//		microrl_printString (&Buf[i]);
-//		microrl_printString ((char*)Buf);
-
 		for (i = 0; i < Len; i++)
 		{
-//			sprintf(str,"Cnt: %d", i);
-//			strcpy(str, (char*)Buf);
-//			microrl_printString (str);
 			xQueueSendFromISR(xQueueCmdBuffer, &Buf[i], &xHigherPriorityTaskWoken);
 //			xQueueSend(xQueueCmdBuffer, &Buf[i], 0U);
 
@@ -258,6 +244,6 @@ void ConsoleInput(uint8_t* Buf, uint32_t Len)
 // print to stream callback
 void microrl_sendString (const char * str)
 {
-//	VCP_DataTx((uint8_t *)str, strlen(str));
 	CDC_Transmit_FS((uint8_t *)str, strlen(str));
+	vTaskDelay(1);
 }

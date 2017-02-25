@@ -78,16 +78,9 @@ void microrl_run(void *pvParameters)
 
 void vLedTask (void *pvParameters)
 {
-	char str[50];
-	uint32_t cnt = 0;
-
     while(1)
     {
-    	vTaskDelay(2000);
-		sprintf(str,"LedTask cnt: %d", cnt++);
-		microrl_printString (str);
-		sprintf(str,"LedTask cnt: %d", cnt++);
-		microrl_printString (str);
+    	vTaskDelay(1000);
     	HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
     }
 
@@ -115,7 +108,7 @@ int main(void)
 	consoleInit();
 
 	xTaskCreate(	vLedTask,"led",
-					50,
+					200,
 					NULL,
 					tskIDLE_PRIORITY + 1, // Самый низкий приоритет после 0
 					NULL);
