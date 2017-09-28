@@ -41,20 +41,16 @@
   ******************************************************************************
   */
 /* Includes ------------------------------------------------------------------*/
-#include "main.h"
-#include "stm32f1xx_hal.h"
-#include "cmsis_os.h"
+#include "conf.h"
+#include "console.h"
 #include "usb_device.h"
-#include "microrl_func.h"
-
-#include <stdio.h>
 
 /* Private variables ---------------------------------------------------------*/
 osThreadId defaultTaskHandle;
 
 /* USER CODE BEGIN PV */
 /* Private variables ---------------------------------------------------------*/
-
+volatile uint32_t periodBlink;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -80,7 +76,7 @@ void vLedTask (void *pvParameters)
 {
     while(1)
     {
-    	vTaskDelay(1000);
+    	vTaskDelay(periodBlink);
     	HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
     }
 
@@ -96,6 +92,18 @@ int main(void)
 
 	/* Reset of all peripherals, Initializes the Flash interface and the Systick. */
 	HAL_Init();
+
+	periodBlink = 1000;
+
+//	/* Disable all interrupts */
+//	__set_PRIMASK(1);
+//
+//	/* Set the Vector Table base location at 0x4000 */
+////	NVIC_SetVectorTable(NVIC_VectTab_FLASH, 0x4000);
+//	SCB->VTOR = (FLASH_BASE | 0x4000);
+//
+//	/* Enable all interrupts */
+//	__set_PRIMASK(0);
 
 	/* Configure the system clock */
 	SystemClock_Config();

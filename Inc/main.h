@@ -46,12 +46,18 @@
   /* Includes ------------------------------------------------------------------*/
 
 /* USER CODE BEGIN Includes */
+//#include "stm32f1xx_hal.h"
+//#include "cmsis_os.h"
+//#include "usb_device.h"
 
+//#include <stdint.h>
+//#include <stdio.h>
 /* USER CODE END Includes */
 
 /* Private define ------------------------------------------------------------*/
 
 /* USER CODE BEGIN Private defines */
+
 
 /* USER CODE END Private defines */
 
